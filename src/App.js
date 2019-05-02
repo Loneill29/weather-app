@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Weather from './components/Weather';
 import Form from './components/Form';
-import Titles from './components/Titles';
 import './App.css';
 
 const Api_Key = "d906ff4d6108b87a3b1a95a73de528e9";
@@ -14,6 +13,7 @@ class App extends Component {
     country: undefined,
     humidity: undefined,
     description: undefined,
+    image: undefined,
     error: undefined,
   }
 
@@ -34,6 +34,7 @@ class App extends Component {
         country: response.list[0].sys.country,
         humidity: response.list[0].main.humidity,
         description: response.list[0].weather[0].description,
+        image: `owf owf-${response.list[0].weather[0].id} owf-5x`,
         error: ""
       });
     } else {
@@ -47,7 +48,6 @@ class App extends Component {
     return (
       <div className="app">
         <div className="title-form">
-          <Titles />
           <Form loadWeather={this.getWeather} />
         </div>
         <div className="weather">
@@ -57,6 +57,7 @@ class App extends Component {
             country={this.state.country}
             humidity={this.state.humidity}
             description={this.state.description}
+            image={this.state.image}
             error={this.state.error}
             />
           </div>
