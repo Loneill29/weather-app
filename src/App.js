@@ -15,6 +15,8 @@ class App extends Component {
     description: undefined,
     image: undefined,
     error: undefined,
+    date: undefined,
+    dailyData: [],
   }
 
   getWeather = async (e) => {
@@ -24,19 +26,23 @@ class App extends Component {
     e.preventDefault();
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&APPID=${Api_Key}&units=imperial`);
     const response = await api_call.json();
+    const dailyData = response.list.filter(response => response.dt_txt.includes("18:00:00"));
 
-    console.log(response);
+    console.log(dailyData);
 
     if(city && country) {
       this.setState({
+        dailyData: dailyData,
         temperature: response.list[0].main.temp,
         city: response.name,
         country: response.list[0].sys.country,
         humidity: response.list[0].main.humidity,
         description: response.list[0].weather[0].description,
+        date: response.list[0].dt_txt,
         image: `owf owf-${response.list[0].weather[0].id} owf-5x`,
         error: ""
       });
+
     } else {
       this.setState ({
         error: "Please input search values"
@@ -51,8 +57,11 @@ class App extends Component {
           <Form loadWeather={this.getWeather} />
         </div>
         <div className="weather">
+        {this.state.dailyData.map( (response, index) => (
           <Weather
+
             temperature={this.state.temperature}
+            date={this.state.date}
             city={this.state.city}
             country={this.state.country}
             humidity={this.state.humidity}
@@ -60,6 +69,9 @@ class App extends Component {
             image={this.state.image}
             error={this.state.error}
             />
+          )
+        )
+      }
           </div>
       </div>
     );
