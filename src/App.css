@@ -1,16 +1,40 @@
 .app {
   width: 100%!important;
-  margin-top: 30px;
+}
+
+body {
+  background-color: #ededed!important;
 }
 
 .title-form {
   text-align: center;
+  margin: auto;
   display: inline;
+}
+
+h3 {
+  background-color: #054ea1;
+  color: #ffff;
+  padding: 10px;
+  display: inline;
+  position: absolute;
+  margin-left: 20px;
+}
+
+form {
+  background-color: #ffff;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0!important;
+  box-shadow: 1px 1px 3px grey;
 }
 
 .city-name, .country-name {
   padding: 10px;
-  border-radius: 5px;
+  border: 0px;
+  box-shadow: 1px 1px 3px grey;
   margin-top: 10px;
 }
 
@@ -19,7 +43,21 @@
 }
 
 .card {
+  color: #ffff;
   text-align: center;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 1px 1px 3px grey;
+  background-image: linear-gradient(#54a6d3, #3c58ca);
+}
+
+.card i {
+  padding-top: 50px;
+}
+
+.card .conditions {
+  padding-bottom: 50px;
 }
 
 .get-weather {
@@ -46,4 +84,16 @@
 .owf {
   display: block!important;
   margin: 30px;
+}
+
+@media (max-width: 914px) {
+  form .tagline {
+    margin-top: 100px;
+  }
+  h3 {
+    width: 100%;
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
 }
