@@ -42,7 +42,6 @@ class App extends Component {
         image: `owf owf-${response.list[0].weather[0].id} owf-5x`,
         error: ""
       });
-
     } else {
       this.setState ({
         error: "Please input search values"
